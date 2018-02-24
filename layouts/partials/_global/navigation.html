@@ -1,0 +1,21 @@
+<nav class="py-3 px-3 md:px-4 text-white bg-inherit" role="navigation">
+  <div class="flex-l justify-between items-mx-auto mx-auto">
+    <a href="/" class="dim text-4xl fw2 no-underline color-inherit inline-block">
+      {{ .Site.Title }}
+    </a>
+    <div class="md:flex items-center">
+      {{ if .Site.Menus.main }}
+        <ul class="pl-0 mr-3 list-reset">
+          {{ range .Site.Menus.main }}
+          <li class="inline-block pr-3">
+            <a class="dim no-underline color-inherit" href="{{ .URL }}" title="{{ .Name }} page">
+              {{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ partial "_components/social-follow.html" . }}
+    </div>
+  </div>
+</nav>

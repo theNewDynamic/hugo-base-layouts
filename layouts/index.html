@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{ range first 1 (where .Data.Pages "Section" "book") }}
+    <main>
+      <div class="cover" style="background-image:url({{ $.Params.hero.image }});">
+        <div class="cf w-80-l px-4 px-4-m mx-auto py-4 lg:py-5">
+          <div class="float-left w-100 w-50-l lg:pt-4">
+            {{ with .Params.description }}
+              <div class="cf pr-3 text-2xl leading-normal mb-4 text-white">
+                {{ . | markdownify }}
+              </div>
+            {{ end }}
+
+          </div>
+          <div class="float-left w-100 w-50-l lg:pl-5 mt-4 md:mt-0">
+            <a href="{{ .URL }}">
+            {{ if .Params.images }}
+              <img src="{{ index (.Params.images) 0 }}" alt="Cover image for {{ .Title }}" class="w-90 shadow-5 sm:mt-3 md:mt-0 lg:mt-0 mb-2 lg:mb-0">
+            {{ end }}
+            </a>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  {{ end }}
+{{ end }}

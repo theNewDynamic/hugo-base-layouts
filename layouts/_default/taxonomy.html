@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <article class="cf pa3 pa4-m pa4-l">
+    <div class="measure-wide-l mx-auto text-xl leading-normal nested-copy-line-height nested-no-underlines nested-img mid-gray">
+
+      <h1>{{ .Title }}</h1>
+    </div>
+  </article>
+  <div class="mw8 mx-auto">
+    {{ $section := .Data.Pages }}
+    <section class="flex-ns flex-wrap justify-around mt-5">
+      {{ range  $section }}
+        <div class="relative w-100  mb-4 bg-white">
+          {{ partial "summary.html" (dict "item" . )}}
+        </div>
+      {{ end }}
+    </section>
+  </div>
+{{ end }}

@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{$section := .Site.GetPage "section" .Section}}
+  <div class="mw8 mx-auto px-4 pt5">
+    <h1 class="accent-color text-5xl mb-2">{{$section.Title}}</h1>
+    {{with $section.Params.description}}
+      <p class="leading-normal">{{.}}</p>
+    {{end}}
+    <section class="pt5 min-vh-100">
+      {{range .Paginator.Pages}}
+        <div class="relative w-100 mb-5">
+          {{ partial "summary.html" (dict "item" . )}}
+        </div>
+      {{ end }}
+    </section>
+    {{ template "_internal/pagination.html" . }}
+  </div>
+{{ end }}
