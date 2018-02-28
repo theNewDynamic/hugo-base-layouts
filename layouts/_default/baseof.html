@@ -9,7 +9,7 @@
       {{partialCached "_head/scripts.html" .}}
     {{end}}
   </head>
-  <body class="m-0 font-sans bg-grey-lightest{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+  <body class="m-0 body-color font-primary {{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
     {{ block "header" . }}{{ partial "_global/header.html" .}}{{ end }}
     <div id="content" class="content">
       <main role="main">
