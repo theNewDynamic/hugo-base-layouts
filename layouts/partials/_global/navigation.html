@@ -11,8 +11,8 @@
         {{ if .Site.Menus.main }}
           <ul class="nav text-lg pl-0 lg:ml-8 mb-3 md:mb-0">
             {{ range .Site.Menus.main }}
-            <li class="inline-block bg-redTK hover:bg-blacfk ">
-              <a class="block md:pl-3 pr-3 py-3 leading-none dim no-underline{{if ($currentPage.IsMenuCurrent "main" .) true}} active{{end}}" href="{{ .URL }}" title="{{ .Name }} page">
+            <li class="inline-block">
+              <a class="block color-inherit md:pl-3 pr-3 py-3 leading-none dim no-underline{{if ($currentPage.IsMenuCurrent "main" .) true}} active{{end}}" href="{{ .URL }}" title="{{ .Name }} page">
                 {{ .Name }}
               </a>
             </li>
