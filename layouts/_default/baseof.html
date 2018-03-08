@@ -20,5 +20,8 @@
         {{- partial "_global/footer.html" . -}}
       {{ end }}
     </div>
+    {{ block "bottom" . }}
+      {{- partial "_global/page-bottom.html" . -}}
+    {{ end }}
   </body>
 </html>
