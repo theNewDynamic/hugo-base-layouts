@@ -13,7 +13,7 @@
 {{$css_path := $.Param "dev.css_path"}}
 {{with $css_path}}
   {{range readDir .}}
-    <link href='{{replace $css_path "static/" "/"}}/{{.Name}}' rel='stylesheet' type="text/css" />
+    <link href='{{replace $css_path "static/" "/"}}/{{.Name}}' rel='stylesheet' type="text/css" data-turbolinks-track="reload" />
   {{end}}
 {{end}}
 
