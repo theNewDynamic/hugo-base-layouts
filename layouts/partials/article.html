@@ -8,9 +8,9 @@
       {{partial "_components/time.html" (dict "context" . "show_time" false)}}
     {{end}}
   {{end}}
-    {{ with .Params.images }}
-      <img src="{{index . 0 | absURL }}" class="float-left mb-2 mr3 mt-2 mw5 shadow-5" alt="Image " />
-    {{ end }}
+
+    {{partial "_components/image-article.html" .}}
+
     {{with .Params.description}}
       <p>{{. | markdownify}}</p>
     {{end}}
