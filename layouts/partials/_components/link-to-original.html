@@ -1,12 +1,12 @@
-{{with .item.Params.link_to_original}}
-  <a href="{{.}}" class="accent-color-dark no-underline inline-block dim v-btm"/>
-    {{with $.item.Params.where_published}}
-      <span class="f6 i">{{.}}</span>
-    {{end}}
-    {{partial "svg/link-external.html" (dict "size" "12")}}
+{{ with .Params.link_to_original }}
+  <a href="{{- . -}}" class="text-accent-color-dark no-underline inline-block dim v-btm">
+    {{ with $.Params.where_published }}
+      <span class="f6 i">{{- . -}}</span>
+    {{ end }}
+    {{ partial "svg/link-external.html" (dict "size" "12") }}
   </a>
-  {{else}}
-    {{with $.item.Params.where_published}}
-      <span class="f6 i">{{.}}</span>
-    {{end}}
-{{end}}
+  {{ else }}
+    {{ with .Params.where_published }}
+      <span class="f6 i text-accent-color-dark">{{- . -}}</span>
+    {{ end }}
+{{ end }}

@@ -1,18 +1,15 @@
 {{ define "main" }}
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l mx-auto text-xl leading-normal nested-copy-line-height nested-no-underlines nested-img mid-gray">
+  {{$section := .Site.GetPage "section" .Section}}
+  <div class="max-w-md mx-auto px-4 pt-5">
+    {{- partial "_components/page-heading.html" $section -}}
 
-      <h1>{{ .Title }}</h1>
-    </div>
-  </article>
-  <div class="mw8 mx-auto">
-    {{ $section := .Data.Pages }}
-    <section class="flex-ns flex-wrap justify-around mt-5">
-      {{ range  $section }}
-        <div class="relative w-100  mb-4 bg-white">
-          {{ partial "summary.html" (dict "item" . )}}
+    <section class="pt5 min-vh-100">
+      {{range .Paginator.Pages}}
+        <div class="relative w-full mb-8">
+          {{- partial "summary.html" . -}}
         </div>
       {{ end }}
     </section>
+    {{- template "_internal/pagination.html" . -}}
   </div>
 {{ end }}
