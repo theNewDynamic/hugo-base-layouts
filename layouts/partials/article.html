@@ -2,7 +2,9 @@
   <h1 class="text-5xl color-inherit">
     {{ .Title | markdownify }}
   </h1>
+
   <section class="nested-copy-line-height leading-normal text-xl nested-no-underlines nested-imgTK mid-gray">
+
   {{if (or (eq .Section "article") (eq .Section "event"))}}
     {{if .Date}}
       {{partial "_components/time.html" (dict "context" . "show_time" false)}}
@@ -10,16 +12,11 @@
   {{end}}
 
     {{partial "_components/image-article.html" .}}
+    {{partial "_components/description.html" .}}
 
-    {{with .Params.description}}
-      <p>{{. | markdownify}}</p>
-    {{end}}
     {{ .Content }}
-    {{/* {{if .Params.venue}}
-      <div class="b--light-gray bt f6 mid-gray pt2 sans-serif">
-        {{- partial "_components/event-venue.html" . -}}
-      </div>
-    {{end}} */}}
-    {{/* {{partial "articles/no-underline-to-original.html" (dict "item" .)}} */}}
+    {{partial "_components/venue.html" .}}
+
+    {{partial "_components/link-to-original.html" (dict "item" .)}}
   </section>
 </article>
