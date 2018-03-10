@@ -1,7 +1,9 @@
 {{ with .Params.link_to_original }}
-  <a href="{{- . -}}" class="text-accent-color-dark no-underline inline-block dim v-btm">
+  <a href="{{- . -}}" class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibolfd text-grey-darker mr-2 dim no-underline font-sans">
     {{ with $.Params.where_published }}
-      <span class="f6 i">{{- . -}}</span>
+      {{- . -}}
+      {{ else }}
+    {{replaceRE "^https?://([^/]+).*" "$1" . | safeHTMLAttr}}
     {{ end }}
     {{ partial "svg/link-external.html" (dict "size" "12") }}
   </a>
