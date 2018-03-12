@@ -1,3 +1,7 @@
 {{ with .Params.images }}
-  <img data-src="{{index . 0 | absURL }}" class="lazyload float-left mb-2 mr-3 mt-2 max-w-xs shadow-md" alt="Image " />
+<div class="lazyload" data-noscript="">
+  <noscript>
+    <img src="{{index . 0 | absURL }}" class="lazyload float-left mb-2 mr-3 mt-2 max-w-xs shadow-md" alt="Image " />
+  </noscript>
+</div>
 {{ end }}
