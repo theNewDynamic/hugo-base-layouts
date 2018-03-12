@@ -2,28 +2,35 @@
   <p class="text-sm fw6 mb-2">
     Order from these retailers
   </p>
+  {{/*
+  If we're using external links, only show them and not the generated links
+  */}}
   {{ with .Params.buy_links_external }}
+
     {{ range . }}
       {{ if .link }}
         <a href="{{.link}}" class="btn btn-buylinks">
-          {{with .name}}{{.}}{{end}}
+          {{with .name}}{{- . -}}{{end}}
         </a>
       {{end}}
     {{ end }}
-  {{ else }}
-    {{ with .Params.editions_isbn }}
-      {{ if isset . "paperback" }}
-        {{- template "links" .paperback -}}
-      {{ else if isset . "hardcover" }}
-        {{- template "links" .hardcover -}}
-      {{ end }}
-      {{ if isset . "ebook" }}
-        {{- template "links_ebook" .ebook -}}
-      {{ end }}
+
+  {{ else }} {{/* Otherwise, show the generated links */}}
+      {{/* Always show the paperback in favor of HC, if it exists */}}
+    {{ with $.Param "editions_isbn.paperback" }}
+      {{- template "links" . -}}
+    {{else }}
+      {{ with $.Param "editions_isbn.hardcover" }}
+        {{- template "links" . -}}
+      {{end}}
     {{ end }}
+
+    {{  with $.Param "editions_isbn.ebook" }}
+      {{- template "links_ebook" . -}}
+    {{ end }}
+
   {{ end }}
 </div>
-
 
 {{ define "links" }}
   <a href="//www.indiebound.org/product/info.jsp?isbn={{ . }}" target="_blank" class="btn btn-buylinks">
