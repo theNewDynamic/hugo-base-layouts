@@ -3,7 +3,7 @@
   {{ $events_upcoming := where $events ".Date" "ge" now }}
   {{ $events_past := where $events.Reverse ".Date" "lt" now }}
 
-  <div class="max-w-md mx-auto px-4 pt-6">
+<div class="page-list_default mx-auto min-h-screen">
     {{ partial "_components/page-heading.html" . }}
 
     <section class="pt-5 min-vh-100">
