@@ -4,7 +4,7 @@
   </a>
   {{ with .Params.subtitle }}
     <span class="text-xl block text-color-primary lg:inline-block lh-solid mt-2 lg:mt-0">
-      {{- . -}}
+      {{- . | markdownify -}}
     </span>
   {{ end }}
 </h1>
