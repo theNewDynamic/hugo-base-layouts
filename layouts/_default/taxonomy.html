@@ -1,18 +1,24 @@
 {{ define "main" }}
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l mx-auto text-xl leading-normal nested-copy-line-height nested-no-underlines nested-img mid-gray">
+  {{$section := .Site.GetPage "section" .Section}}
 
-      <h1>{{ .Title }}</h1>
+  <div class="page-list_default mx-auto min-h-screen">
+    {{- partial "_components/page-heading.html" . -}}
+
+
+    <div class="md:flex flex-wrap md:flex-row-reverse mx-auto">
+      <aside class="md:w-1/3 md:px-8 pb-8">
+          {{- partial "_components/category-tag-listing.html" . -}}
+      </aside>
+
+      <section class="md:w-2/3 pt5 min-vh-100">
+        {{range .Paginator.Pages}}
+          <div class="relative w-full mb-8">
+            {{- partial "summary.html" . -}}
+          </div>
+        {{ end }}
+      </section>
     </div>
-  </article>
-  <div class="mw8 mx-auto">
-    {{ $section := .Data.Pages }}
-    <section class="flex-ns flex-wrap justify-around mt-5">
-      {{ range  $section }}
-        <div class="relative w-100  mb-4 bg-white">
-          {{ partial "summary.html" (dict "item" . )}}
-        </div>
-      {{ end }}
-    </section>
+
+    {{- template "_internal/pagination.html" . -}}
   </div>
 {{ end }}
