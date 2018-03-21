@@ -10,19 +10,19 @@
     {{ range . }}
       {{ if .link }}
         <a href="{{.link}}" class="btn btn-buylinks">
-          {{with .name}}{{- . -}}{{end}}
+          {{ with .name }}{{- . -}}{{ end }}
         </a>
-      {{end}}
+      {{ end }}
     {{ end }}
 
   {{ else }} {{/* Otherwise, show the generated links */}}
       {{/* Always show the paperback in favor of HC, if it exists */}}
     {{ with $.Param "editions_isbn.paperback" }}
       {{- template "links" . -}}
-    {{else }}
+    {{ else }}
       {{ with $.Param "editions_isbn.hardcover" }}
         {{- template "links" . -}}
-      {{end}}
+      {{ end }}
     {{ end }}
 
     {{  with $.Param "editions_isbn.ebook" }}

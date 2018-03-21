@@ -40,9 +40,9 @@
     </h3>
     <ul class="list-reset">
       {{ range . }}
-        {{$url := printf "%s%s%s" ("/tags/" | relLangURL) (. | urlize ) "/"}}
+        {{ $url := printf "%s%s%s" ("/tags/" | relLangURL) (. | urlize ) "/" }}
         <li class="inline md:block pr-3">
-          <a href="{{ $url }}" class="no-underline text-grey-darker dim{{if eq $url $currentPage.URL }} active{{end}}">
+          <a href="{{ $url }}" class="no-underline text-grey-darker dim{{ if eq $url $currentPage.URL }} active{{ end }}">
             {{ . }}
           </a>
         </li>

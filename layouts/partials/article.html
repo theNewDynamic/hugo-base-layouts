@@ -3,11 +3,11 @@
 
   <section class="nested-copy-line-height leading-normal text-xl nested-no-underlines nested-imgTK mid-gray">
 
-  {{if (or (eq .Section "article") (eq .Section "event"))}}
-    {{if .Date}}
-      {{partial "_components/time.html" (dict "context" . "show_time" false)}}
-    {{end}}
-  {{end}}
+  {{ if (or (eq .Section "article") (eq .Section "event")) }}
+    {{ if .Date }}
+      {{ partial "_components/time.html" (dict "context" . "show_time" false) }}
+    {{ end }}
+  {{ end }}
 
     {{partial "_components/image-article.html" .}}
     {{partial "_components/description.html" .}}

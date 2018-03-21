@@ -3,7 +3,7 @@
     {{ with $.Params.where_published }}
       {{- . -}}
       {{ else }}
-    {{replaceRE "^https?://([^/]+).*" "$1" . | safeHTMLAttr}}
+    {{ replaceRE "^https?://([^/]+).*" "$1" . | safeHTMLAttr }}
     {{ end }}
     {{ partial "svg/link-external.html" (dict "size" "12") }}
   </a>

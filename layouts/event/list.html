@@ -7,18 +7,18 @@
     {{ partial "_components/page-heading.html" . }}
 
     <section class="pt-5 min-vh-100">
-      {{range $events_upcoming}}
+      {{ range $events_upcoming }}
         <div class="relative w-full mb-8 border-b">
-            {{.Render "item"}}
+            {{ .Render "item" }}
         </div>
       {{ end }}
-      {{if $events_past}}
-        {{$id := "events"}}
+      {{ if $events_past }}
+        {{ $id := "events" }}
         <div class="mt-8">
           <h2>Past Events</h2>
-          {{range $events_past}}
+          {{ range $events_past }}
             <div class="relative w-full mb-8 border-b">
-                {{.Render "item"}}
+                {{ .Render "item" }}
             </div>
           {{ end }}
         </div>

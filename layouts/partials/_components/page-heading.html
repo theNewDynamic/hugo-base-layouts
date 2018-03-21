@@ -4,6 +4,6 @@ For sections, requires $section being passed through: {{partial "_components/pag
 <h1 class="page-heading leading-tight">
   {{- .Title | markdownify -}}
 </h1>
-{{with .Params.description}}
+{{ with .Params.description }}
   <p class="page-description leading-normal">{{- . | markdownify -}}</p>
-{{end}}
+{{ end }}
