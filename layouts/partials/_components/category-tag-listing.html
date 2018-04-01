@@ -1,52 +1,38 @@
+{{/*
+Loop through just this section's pages to get the taxonomies it displays (choice: categories, tags), or if a taxonomy page, get all the taxonomies
+  TODO: Make .Data/.Site pages loop more concise 
+*/}}
+
 {{$currentPage := .}}
+
+{{ if eq .Kind "taxonomy"}}
+{{ range .Site.Pages }}
+{{ with .Params.tags }}
+  {{ range sort . "value" "asc" }}
+    {{ $.Scratch.SetInMap "tags" . . }}
+  {{ end }}
+{{ end }}
+{{ with .Params.categories }}
+  {{ range sort . "value" "asc" }}
+    {{ $.Scratch.SetInMap "category" . . }}
+  {{ end }}
+{{ end}}
+
+{{ end}}
+{{else}}
 {{ range .Data.Pages }}
   {{ with .Params.tags }}
     {{ range sort . "value" "asc" }}
       {{ $.Scratch.SetInMap "tags" . . }}
     {{ end }}
   {{ end }}
-  {{ with .Params.category }}
+  {{ with .Params.categories }}
     {{ range sort . "value" "asc" }}
       {{ $.Scratch.SetInMap "category" . . }}
     {{ end }}
   {{ end}}
 {{ end}}
-{{ $category := $.Scratch.GetSortedMapValues "category" }}
-{{ $tags := $.Scratch.GetSortedMapValues "tags" }}
+{{ end}}
 
-  {{/* {{$category := true}}
-  {{$tags := .Site.Taxonomies.tags}} */}}
 
-<div class="sidebar-list">
-  {{ with $category }}
-    <h3 class="mb-2">
-      {{- $.Site.Param "categoryName" | default "Categories" -}}
-    </h3>
-    <ul class="list-reset">
-      {{ range . }}
-        {{$url := printf "%s%s%s" ("/category/" | relLangURL) (. | urlize ) "/" }}
-        <li class="inline md:block pr-3">
-          <a href="{{ $url }}" class="no-underline text-grey-darker dim{{if eq $url $currentPage.URL }} active{{end}}">
-            {{ . }}
-          </a>
-        </li>
-      {{ end }}
-    </ul>
-  {{ end }}
-
-  {{ with $tags }}
-    <h3 class="mb-2">
-      {{- $.Site.Param "tagsName" | default "Topics" -}}
-    </h3>
-    <ul class="list-reset">
-      {{ range . }}
-        {{ $url := printf "%s%s%s" ("/tags/" | relLangURL) (. | urlize ) "/" }}
-        <li class="inline md:block pr-3">
-          <a href="{{ $url }}" class="no-underline text-grey-darker dim{{ if eq $url $currentPage.URL }} active{{ end }}">
-            {{ . }}
-          </a>
-        </li>
-      {{ end }}
-    </ul>
-  {{ end }}
-</div>
+{{ partial "_components/category-tag-listing-display.html" . }}
