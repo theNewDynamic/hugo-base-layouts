@@ -2,7 +2,7 @@
 {{ $category := $.Scratch.GetSortedMapValues "category" }}
 {{ $tags := $.Scratch.GetSortedMapValues "tags" }}
 
-
+{{ if or ($tags) $category }}
 <div class="sidebar-list">
   {{ with $category }}
     <h3 class="mb-2">
@@ -36,3 +36,4 @@
     </ul>
   {{ end }}
 </div>
+{{ end }}
