@@ -1,4 +1,4 @@
-<div class="summary card">
+<div class="summary card mb-16">
 {{ if .Params.images}}
   <img src="{{index (.Params.images) 0}}" class="w-full" />
 {{ end }}
@@ -18,9 +18,9 @@
 {{ end }}
 
 {{with .Params.tags}}
-  <section class="tags">
+  <section class="tags mt-2">
     {{range .}}
-      <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#{{.}}</span>
+      <span class="inline-block">#{{.}}</span>
     {{end}}
   </section>
 {{end}}
