@@ -1,13 +1,12 @@
 {{ $currentPage := . }}
-<div class="py-3 px-3 md:px-4 color-inherit bg-inherit max-w-4xl mx-auto">
-  <div class="md:flex justify-between items-center mx-auto mx-auto">
+<div class="py-3 px-3 md:px-4 color-inherit bg-inherit max-w-4xl mx-auto md:flex justify-between items-center">
+
 
     <div class="lg:flex flex-direction justify-between">
       <a href="/" class="site-title font-brand dim text-5xl md:text-4xl lg:text-4xl xl:text-5xl bold no-underline color-inherit inline-block">
         {{ .Site.Title }}
       </a>
-
-      <div class="md:flex items-center">
+      <div class="lg:ml-8">
         {{- partial "_global/menu.html" (dict "page" . "menu" "main") -}}
       </div>
     </div>
@@ -16,5 +15,4 @@
       {{ partial "_components/social-follow.html" (dict "cx" . "icon_size" "32px") }}
     </div>
 
-  </div>
 </div>
