@@ -8,8 +8,8 @@
         {{- partial "_components/category-tag-listing.html" . -}}
       </aside>
 
-      <section class="md:w-2/3T pt5 min-vh-100">
-        <div class="grid grid-columns-1/3 grid-gap-1">
+      <section class="md:w-2/3 pt5 min-vh-100">
+        <div class="list-display">
           {{ range .Paginator.Pages }}
             {{- partial "summary.html" . -}}
           {{ end }}
