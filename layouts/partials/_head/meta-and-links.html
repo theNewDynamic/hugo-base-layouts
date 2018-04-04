@@ -38,10 +38,10 @@
   {{ else }}
     {{ if $.Param "image.file" }}
       {{ $image := printf "%s%s" $image_url ($.Param "image.file") }}
-      <meta property="og:image" content="{{$image}}" />
-      <meta itemprop="image" content="{{$image}}">
+      <meta property="og:image" content="{{ $image }}" />
+      <meta itemprop="image" content="{{ $image }}">
       <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:image:src" content="{{$image}}"/>
+      <meta name="twitter:image:src" content="{{ $image }}"/>
     {{ else if $.Param "featured_image.file" }}
         {{ $image := printf "%s%s" $image_url ($.Param "featured_image.file") }}
         <meta property="og:image" content="{{ $image }}" />
