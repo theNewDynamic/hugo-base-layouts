@@ -3,5 +3,6 @@
     {{ .Content }}
 </blockquote>
 {{ with .Params.attribution }}
-  <div class="color-inherit text-base nt4 o-90 sans-serif"> – {{ . | markdownify }}</div>
+  <div class="inline-block color-inherit text-base nt4 o-90 sans-serif"> – {{ . | markdownify }}</div>
 {{ end }}
+{{ partial "_components/link-to-original.html" . }}

@@ -8,20 +8,23 @@
       <div class="md:flex flex-wrap">
         <div class="w-full md:w-2/5 lg:pt-2">
           {{- partial "books/cover.html" . -}}
-          {{- partial "books/meta-data.html" . -}}
+          {{- partial "books/meta-data-array.html" . -}}
         </div>
         <div class="w-full md:w-3/5 mt-4 md:mt-0 md:px-6">
             {{ partial "books/description.html" . }}
           <div class="border-b my-4 leading-normal">
             {{ .Content }}
           </div>
-          {{ partial "books/buylinks.html" . }}
+          {{ $count := "1" }}
+          {{ partial "books/buylinks_array.html" (dict "item" . "count" "10") }}
         </div>
       </div>
     </section>
     <section class="mx-auto flex flex-columnd mb-32 mt-8 px-4 md:px-4 text-on-primary-color">
+      {{- partial "books/covers-editions.html" . -}}
+    </section>
+    <section class="mx-auto flex flex-columnd mb-32 mt-8 px-4 md:px-4 text-on-primary-color">
       {{- partial "books/praise.html" (dict "count" 100 "Page" . ) -}}
     </section>
-
   </div>
 {{ end }}

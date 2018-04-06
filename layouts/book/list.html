@@ -4,19 +4,19 @@
       {{- partial "books/praise-featured.html" . -}}
     </div>
     {{ range .Pages }}
-      <section class="mx-auto px-4 md:px-4 py-4 py- w-80-l">
+      <section class="mx-auto px-4 md:px-4 py-4 w-80-l">
         {{- partial "books/header.html" . -}}
         <div class="md:flex flex-wrap">
           <div class="w-full md:w-2/5 lg:pt-2">
             {{- partial "books/cover.html" . -}}
-            {{- partial "books/meta-data.html" . -}}
+            {{- partial "books/meta-data-array.html" . -}}          
           </div>
           <div class="w-full md:w-3/5 mt-4 md:mt-0 md:px-6">
               {{ partial "books/description.html" . }}
             <div class="border-b my-4 leading-normal">
               {{ .Content }}
             </div>
-            {{ partial "books/buylinks.html" . }}
+            {{ partial "books/buylinks_array.html" (dict "item" . "count" "10") }}
           </div>
         </div>
       </section>

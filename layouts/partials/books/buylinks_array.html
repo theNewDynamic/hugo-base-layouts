@@ -1,5 +1,4 @@
-{{/* DEPRECATED IN FAVOR OF BUYLINKS_ARRAY */}}
-
+{{ $count := .count }}
 <div class="mt-4 smallprint-font">
   <p class="text-sm fw6 mb-2">
     Order from these retailers
@@ -7,7 +6,7 @@
   {{/*
   If we're using external links, only show them and not the generated links
   */}}
-  {{ with .Params.buy_links_external }}
+  {{ with .item.Params.buy_links_external }}
 
     {{ range . }}
       {{ if .link }}
@@ -19,16 +18,31 @@
 
   {{ else }} {{/* Otherwise, show the generated links */}}
       {{/* Always show the paperback in favor of HC, if it exists */}}
-    {{ with $.Param "editions_isbn.paperback" }}
-      {{- template "links" . -}}
-    {{ else }}
-      {{ with $.Param "editions_isbn.hardcover" }}
-        {{- template "links" . -}}
-      {{ end }}
-    {{ end }}
+      {{/* {{ $editions_physical := where (.Params.editions) "binding" "ne" "ebook"}} */}}
+    {{ with .item.Params.editions }}
 
-    {{  with $.Param "editions_isbn.ebook" }}
-      {{- template "links_ebook" . -}}
+      {{ range first $count (where (.) "binding" "ne" "ebook") }}
+        {{ with .description }}
+          <div class="text-xs font-sans">
+            {{ . }}
+          </div>
+        {{ end }}
+        {{ with .isbn }}
+          {{- template "links" . -}}
+        {{ end }}
+      {{ end }}
+
+      {{ range where (.) "binding" "ebook" }}
+      {{ with .binding }}
+        <div class="text-xs font-sans">
+          {{ . }}
+        </div>
+      {{ end }}
+        {{ with .isbn }}
+          {{- template "links_ebook" . -}}
+        {{ end }}
+      {{ end }}
+
     {{ end }}
 
   {{ end }}
