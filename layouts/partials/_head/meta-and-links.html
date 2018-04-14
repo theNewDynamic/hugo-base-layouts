@@ -10,12 +10,10 @@
   <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 {{ end }}
 
-{{ $css_path := $.Param "dev.css_path" }}
-{{ with $css_path }}
-  {{ range readDir . }}
-    <link href='{{ replace $css_path "static/" "/" }}/{{ .Name }}' rel='stylesheet' type="text/css" data-turbolinks-track="reload" />
+{{ $stylesheet := .Site.Data.webpack_assets.app }}
+  {{ with $stylesheet.css }}
+    <link href="{{ print . }}" rel="stylesheet">
   {{ end }}
-{{ end }}
 
 {{ partial "_head/manifest.html" . }}
 
