@@ -1,6 +1,10 @@
-{{ $js_path := $.Param "dev.js_path" }}
-{{ with $js_path }}
-  {{ range readDir . }}
-    <script src="{{ replace $js_path "static/" "/" }}/{{ .Name }}" async defer></script>
+{{ $script := .Site.Data.webpack_assets.app }}
+{{ with $script.js }}
+  <script src="{{ print . }}" defer></script>
+{{ end }}
+{{ if eq .Type "search" }}
+  {{ $script := .Site.Data.webpack_assets.algolia }}
+  {{ with $script.js }}
+    <script src="{{ print . }}"></script>
   {{ end }}
 {{ end }}
