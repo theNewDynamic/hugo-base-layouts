@@ -10,13 +10,12 @@
 {{ $script := .Site.Data.webpack_assets.app }}
   {{ with $stylesheet.css }}
   Link: <{{ print . }}>; rel=preload; as=style
-  {{end}}
-  link: https://cloud.typography.com/7044452/6355752/css/fonts.css ; rel=preload; as=style
+  {{end}}  
 
   {{ with $script.js }}
   Link: <{{ print . }}>; rel=preload; as=script
   {{end}}
-  
+
   # Set a long cache expiry on asset urls
   {{ with $stylesheet.css }}
   {{ print . }}
@@ -26,4 +25,3 @@
   {{ print . }}
   Cache-Control: public, max-age=31556926
   {{end}}
-  
