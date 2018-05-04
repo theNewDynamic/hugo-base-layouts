@@ -1,8 +1,13 @@
 <blockquote class="text-quotes color-inherit text-2xl lg:text-3xl mb-1 mt-5 leading-tight">
   <div class="text-4xl float-left moon-gray -mt-1 -ml-4 ">&#8223;</div>
-    {{ .Content }}
+    {{ .Content }}&#8221;
 </blockquote>
 {{ with .Params.attribution }}
-  <div class="inline-block color-inherit text-base nt4 o-90 sans-serif"> – {{ . | markdownify }}</div>
+  <div class="block color-inherit text-base mt-4 font-sans"> – {{ . | markdownify }}</div>
 {{ end }}
 {{ partial "_components/link-to-original.html" . }}
+<style media="screen">
+  blockquote, blockquote p {
+    display: inline;
+  }
+</style>
