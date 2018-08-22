@@ -8,13 +8,13 @@
 
     <section class="pt-5 min-vh-100">
       {{ range $events_upcoming }}
-        <div class="relative w-full mb-8 border-b">
+        <div class="relative w-full mb-8 pb-2 border-b">
           {{ .Render "item" }}
         </div>
       {{ end }}
       {{ if $events_past }}
         {{ $id := "events" }}
-        <div class="mt-8">
+        <div class="mt-16">
           <h2>Past Events</h2>
           {{ range $events_past }}
             <div class="relative w-full mb-8 border-b">
